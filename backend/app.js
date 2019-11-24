@@ -31,23 +31,34 @@ io.on('connection', function(socket){
 
   // Add distress signal to the list and refreshes clients
   socket.on('CreateDistressSignal', function(data) {
-    distressSignals.push({
-      id: socket.id, 
-      coords: data.coords,
-      time: Date.now()
-    });
 
-    // twilio_client.calls.create({
-    //   url: process.env.VOICE_URL,
-    //   to: process.env.DEMO_PHONE, // Text this number
-    //   from: process.env.TWILIO // From a valid Twilio number
-    // })
-    // .then((call) => console.log(call.sid));
+    index = -1;
+    for (i = 0; i < distressSignals.length; i++) {
+      if (distressSignals[i]['id'] === socket.id) {
+        index = i;
+        break;
+      }
+    }
 
-    // Update all other users
-    console.log('New Distress Signal ' + socket.id)
-    socket.emit('UpdateDistressSignals', distressSignals);
-    socket.broadcast.emit('UpdateDistressSignals', distressSignals);
+    if (index === -1){
+      distressSignals.push({
+        id: socket.id, 
+        coords: data.coords,
+        time: Date.now()
+      });
+
+      // twilio_client.calls.create({
+      //   url: process.env.VOICE_URL,
+      //   to: process.env.DEMO_PHONE, // Text this number
+      //   from: process.env.TWILIO // From a valid Twilio number
+      // })
+      // .then((call) => console.log(call.sid));
+
+      // Update all other users
+      console.log('New Distress Signal ' + socket.id)
+      socket.emit('UpdateDistressSignals', distressSignals);
+      socket.broadcast.emit('UpdateDistressSignals', distressSignals);
+    }
   });
 
   // Delete Distress Signal by ID and refreshes clients
@@ -64,7 +75,8 @@ io.on('connection', function(socket){
     // If found. Otherwise, shame on you, Justin.
     if (index > -1) {
       console.log('Distress Signal Resolved ' + socket.id)
-      distressSignals.splice(index);
+      distressSignals.splice(index, 1);
+      console.log(distressSignals);
       socket.emit('UpdateDistressSignals', distressSignals);
       socket.broadcast.emit('UpdateDistressSignals', distressSignals);
     }

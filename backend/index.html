@@ -17,30 +17,35 @@
   </head>
   <body>
     <ul id="messages"></ul>
-    <button id="newSignal">Send</button>
+    <button id="newSignal">Alert</button>
+    <button id="deleteSignal">Delete All Alerts</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var socket = io();
       $(function () {
+
         $('#newSignal').click(function(){
           socket.emit('CreateDistressSignal', {coords: [12.3, 234.4]});
         }); 
+
+        $('#deleteSignal').click(function(){
+          socket.emit('DeleteDistressSignals');
+        }); 
+
         socket.on('UpdateDistressSignals', function(signals){
           
           $('#messages').empty();
           for (i = 0; i < signals.length; i++) {
-            
-            $('#messages')
-              .append(
-                $('<li>').text(signals[i]['id'] + " " + signals[i]['coords'] + " " + signals[i]['time'])
-              );
-            
-            $('#messages').append($('<button>').prop('id', signals[i]['id']).click(function(){
-              socket.emit('ResolveDistressSignal', this.attr('id'));
-            }));
+            $('#messages').append(
+              $('<li>')
+                .text(signals[i]['id'] + " " + signals[i]['coords'] + " " + signals[i]['time'])
+                .attr('id', signals[i]['id'])
+                .click(function(){
+                  socket.emit('ResolveDistressSignal', $(this).attr('id'));
+                })
+            );
           }
-
         });
       });
     </script>
