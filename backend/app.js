@@ -52,7 +52,7 @@ io.on('connection', function(socket){
 
   // Delete Distress Signal by ID and refreshes clients
   socket.on('ResolveDistressSignal', function(signal_id) {
-    
+
     let index = -1;
     for(i = 0; i < distressSignals.length; i++) {
       if (distressSignals[i]['id'] === signal_id) {
@@ -73,6 +73,12 @@ io.on('connection', function(socket){
   // Refreshes the client
   socket.on('UpdateDistressSignals', function() {
     socket.emit('UpdateDistressSignals', distressSignals);
+  });
+
+  socket.on('DeleteDistressSignals', function() {
+    distressSignals = [];
+    socket.emit('UpdateDistressSignals', distressSignals);
+    socket.broadcast.emit('UpdateDistressSignals', distressSignals);
   });
 });
 
