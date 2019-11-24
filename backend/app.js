@@ -24,7 +24,7 @@ app.get('/', function(req, res){
 });
 
 var distressSignals = [];
-var enableTwilio = false;
+var enableTwilio = true;
 var connectCounter = 0; 
 
 io.on('connection', function(socket){
