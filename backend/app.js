@@ -25,9 +25,11 @@ app.get('/', function(req, res){
 
 var distressSignals = [];
 var enableTwilio = false;
+var connectCounter = 0; 
 
 io.on('connection', function(socket){
   console.log("New Connexxion: " + socket.id);
+  connectCounter++;
   socket.emit('UpdateDistressSignals', distressSignals);
 
   // Add distress signal to the list and refreshes clients
@@ -61,7 +63,8 @@ io.on('connection', function(socket){
       console.log('New Distress Signal ' + socket.id)
       socket.emit('UpdateAlertStatus', {
         'sessionId': socket.id,
-        'alerting': true
+        'alerting': true,
+        'connectCounter': connectCounter
       });
       socket.broadcast.emit('UpdateDistressSignals', distressSignals);
     }
@@ -104,6 +107,11 @@ io.on('connection', function(socket){
     socket.broadcast.emit('UpdateDistressSignals', distressSignals);
   });
 });
+
+io.on('disconnect', function(socket){
+  connectCounter++;
+});
+
 
 http.listen(port, function(){
   console.log('listening on port:' + port);
