@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"tab1\">\n      <ion-icon name=\"medkit\"></ion-icon>\n      <ion-label>Responder</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"alert\"></ion-icon>\n      <ion-label>Distress</ion-label>\n    </ion-tab-button>\n\n  </ion-tab-bar>\n\n</ion-tabs>\n"
+module.exports = "<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"tab1\">\n      <ion-icon name=\"medkit\"></ion-icon>\n      <ion-label>Responder</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button style=\"--color: red\" tab=\"tab2\">\n      <ion-icon name=\"alert\"></ion-icon>\n      <ion-label>Distress</ion-label>\n    </ion-tab-button>\n\n  </ion-tab-bar>\n\n</ion-tabs>\n"
 
 /***/ }),
 
