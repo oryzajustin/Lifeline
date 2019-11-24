@@ -14,10 +14,12 @@ import { Environment } from '@ionic-native/google-maps';
 import { IonicStorageModule } from '@ionic/storage';
 
 import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
+import {SocketService} from './../services/socket.service';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
-const config: SocketIoConfig = { url: 'https://hackwesternlifeline.appspot.com/', options: {}};
+// const config: SocketIoConfig = { url: 'https://localhost:3000', options: {}};
+const config: SocketIoConfig = { url: 'https://hackwesternlifeline.appspot.com', options: {}};
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,9 +29,10 @@ const config: SocketIoConfig = { url: 'https://hackwesternlifeline.appspot.com/'
   providers: [
     StatusBar,
     SplashScreen,
+    SocketService,
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {}  

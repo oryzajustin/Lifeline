@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Distress\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\t<ion-button color=\"danger\" id=\"center\">CALL FOR HELP</ion-button>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Distress\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\t<ion-button *ngIf=\"!alerting\" color=\"danger\" id=\"center\" (click)=\"GetHelp()\">CALL FOR HELP</ion-button>\r\n\t<ion-card *ngIf=\"alerting\" color=\"success\">\r\n\t  <ion-card-header>\r\n\t    <ion-card-subtitle>{{helperCount}} responders alerted</ion-card-subtitle>\r\n\t    <ion-card-title>Help is on the way!</ion-card-title>\r\n\t  </ion-card-header>\r\n\r\n\t  <ion-card-content>\r\n\t    Here are some \r\n\t  </ion-card-content>\r\n\t</ion-card>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -63,7 +63,7 @@ var Tab2PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  margin-top: -50px;\n  margin-left: -100px;\n  width: 50%;\n  height: 25%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qdXN0aW5rb2gvRG9jdW1lbnRzL0dpdEh1Yi9MaWZlbGluZS9mcm9udGVuZC9zcmMvYXBwL3RhYjIvdGFiMi5wYWdlLnNjc3MiLCJzcmMvYXBwL3RhYjIvdGFiMi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFQyxlQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxpQkFBQTtFQUNBLG1CQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7QUNBRCIsImZpbGUiOiJzcmMvYXBwL3RhYjIvdGFiMi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjY2VudGVyIFxue1xuXHRwb3NpdGlvbjogZml4ZWQ7XG5cdHRvcDogNTAlO1xuXHRsZWZ0OiA1MCU7XG5cdG1hcmdpbi10b3A6IC01MHB4O1xuXHRtYXJnaW4tbGVmdDogLTEwMHB4O1xuXHR3aWR0aDogNTAlO1xuXHRoZWlnaHQ6IDI1JTtcbn1cbiIsIiNjZW50ZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogNTAlO1xuICBsZWZ0OiA1MCU7XG4gIG1hcmdpbi10b3A6IC01MHB4O1xuICBtYXJnaW4tbGVmdDogLTEwMHB4O1xuICB3aWR0aDogNTAlO1xuICBoZWlnaHQ6IDI1JTtcbn0iXX0= */"
+module.exports = "#center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  margin-top: -50px;\n  margin-left: -100px;\n  width: 50%;\n  height: 25%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMi9DOlxcVXNlcnNcXFl1YW4gQ2hlblxcTGlmZWxpbmVcXGZyb250ZW5kL3NyY1xcYXBwXFx0YWIyXFx0YWIyLnBhZ2Uuc2NzcyIsInNyYy9hcHAvdGFiMi90YWIyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLGVBQUE7RUFDQSxRQUFBO0VBQ0EsU0FBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxVQUFBO0VBQ0EsV0FBQTtBQ0FEIiwiZmlsZSI6InNyYy9hcHAvdGFiMi90YWIyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjZW50ZXIgXHJcbntcclxuXHRwb3NpdGlvbjogZml4ZWQ7XHJcblx0dG9wOiA1MCU7XHJcblx0bGVmdDogNTAlO1xyXG5cdG1hcmdpbi10b3A6IC01MHB4O1xyXG5cdG1hcmdpbi1sZWZ0OiAtMTAwcHg7XHJcblx0d2lkdGg6IDUwJTtcclxuXHRoZWlnaHQ6IDI1JTtcclxufVxyXG4iLCIjY2VudGVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDUwJTtcbiAgbGVmdDogNTAlO1xuICBtYXJnaW4tdG9wOiAtNTBweDtcbiAgbWFyZ2luLWxlZnQ6IC0xMDBweDtcbiAgd2lkdGg6IDUwJTtcbiAgaGVpZ2h0OiAyNSU7XG59Il19 */"
 
 /***/ }),
 
@@ -79,18 +79,91 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tab2Page", function() { return Tab2Page; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _services_socket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../services/socket.service */ "./src/services/socket.service.ts");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
+
+
+
 
 
 var Tab2Page = /** @class */ (function () {
-    function Tab2Page() {
+    function Tab2Page(socket, platform, geolocation) {
+        this.socket = socket;
+        this.platform = platform;
+        this.geolocation = geolocation;
+        this.location = {};
+        this.alerting = false;
+        this.helperCount = 0;
     }
+    Tab2Page.prototype.ngOnInit = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // Since ngOnInit() is executed before `deviceready` event,
+                    // you have to wait the event.
+                    return [4 /*yield*/, this.platform.ready()];
+                    case 1:
+                        // Since ngOnInit() is executed before `deviceready` event,
+                        // you have to wait the event.
+                        _a.sent();
+                        this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(function (resp) {
+                            _this.location = { 'lat': resp.coords.latitude, 'lng': resp.coords.longitude };
+                            console.log(_this.location);
+                        });
+                        this.socket.updateDistressSignals()
+                            .subscribe(function (signals) {
+                            console.log("New Update");
+                            console.log(signals);
+                            _this.alerting = false;
+                            if (signals.length > 0) {
+                                for (var i = 0; i < signals.length; i++) {
+                                    if (signals[i]['id'] === _this.socketId) {
+                                        _this.alerting = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        this.socket.updateAlertStatus()
+                            .subscribe(function (data) {
+                            _this.socketId = data.sessionId;
+                            _this.alerting = data.alerting;
+                            _this.helperCount = data.connectCounter;
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Tab2Page.prototype.ionViewDidEnter = function () {
+        this.socket.updateDistressSignals();
+    };
+    Tab2Page.prototype.GetHelp = function () {
+        var _this = this;
+        this.platform.ready();
+        this.geolocation.getCurrentPosition({
+            enableHighAccuracy: true
+        }).then(function (resp) {
+            _this.location = { 'coords': { 'lat': resp.coords.latitude, 'lng': resp.coords.longitude } };
+            console.log(_this.location);
+            _this.socket.emit("CreateDistressSignal", _this.location);
+        });
+    };
+    Tab2Page.ctorParameters = function () { return [
+        { type: _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+        { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_4__["Geolocation"] }
+    ]; };
     Tab2Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-tab2',
             template: __webpack_require__(/*! raw-loader!./tab2.page.html */ "./node_modules/raw-loader/index.js!./src/app/tab2/tab2.page.html"),
             styles: [__webpack_require__(/*! ./tab2.page.scss */ "./src/app/tab2/tab2.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_4__["Geolocation"]])
     ], Tab2Page);
     return Tab2Page;
 }());

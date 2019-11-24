@@ -1901,7 +1901,7 @@ var KmlOverlay = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Responder\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div id=\"map_canvas\" style=\"height: 90%;\"></div>\n    <div id=\"extras\">\n      <p>Timer</p>\n      <ion-button color=\"warning\">\n        All Secure\n      </ion-button>\n    </div>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Responder\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div id=\"map_canvas\" style=\"height: 100%;\"></div>\r\n    <div id=\"extras\" *ngIf=\"currentAlert\">\r\n      <p *ngIf=\"currentAlert\">{{ currentAlert.time | dateAgo }}</p>\r\n      <ion-button *ngIf=\"currentAlert\" [href]=\"gmapsLink\">\r\n        Directions\r\n      </ion-button>\r\n      <ion-button color=\"warning\" (click)=\"ResolveButton()\">\r\n        All Secure\r\n      </ion-button>\r\n    </div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -1922,6 +1922,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _tab1_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tab1.page */ "./src/app/tab1/tab1.page.ts");
+/* harmony import */ var _pipes_date_ago_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../pipes/date-ago.pipe */ "./src/pipes/date-ago.pipe.ts");
+/* harmony import */ var _pipes_TimeAgo_pipe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../pipes/TimeAgo.pipe */ "./src/pipes/TimeAgo.pipe.ts");
+
+
 
 
 
@@ -1937,9 +1941,9 @@ Tab1PageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicModule"],
             _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{ path: '', component: _tab1_page__WEBPACK_IMPORTED_MODULE_6__["Tab1Page"] }])
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{ path: '', component: _tab1_page__WEBPACK_IMPORTED_MODULE_6__["Tab1Page"] }]),
         ],
-        declarations: [_tab1_page__WEBPACK_IMPORTED_MODULE_6__["Tab1Page"]]
+        declarations: [_tab1_page__WEBPACK_IMPORTED_MODULE_6__["Tab1Page"], _pipes_date_ago_pipe__WEBPACK_IMPORTED_MODULE_7__["DateAgoPipe"], _pipes_TimeAgo_pipe__WEBPACK_IMPORTED_MODULE_8__["TimeAgoPipe"]]
     })
 ], Tab1PageModule);
 
@@ -1954,7 +1958,7 @@ Tab1PageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".welcome-card img {\n  max-height: 35vh;\n  overflow: hidden;\n}\n\n#extras {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qdXN0aW5rb2gvRG9jdW1lbnRzL0dpdEh1Yi9MaWZlbGluZS9mcm9udGVuZC9zcmMvYXBwL3RhYjEvdGFiMS5wYWdlLnNjc3MiLCJzcmMvYXBwL3RhYjEvdGFiMS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQkFBQTtFQUNBLGdCQUFBO0FDQ0Y7O0FERUE7RUFFQyxvQkFBQTtFQUFBLGFBQUE7RUFDQSxlQUFBO0VBQ0EseUJBQUE7VUFBQSw4QkFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNBRCIsImZpbGUiOiJzcmMvYXBwL3RhYjEvdGFiMS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud2VsY29tZS1jYXJkIGltZyB7XG4gIG1heC1oZWlnaHQ6IDM1dmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbiNleHRyYXNcbntcblx0ZGlzcGxheTogZmxleDtcblx0ZmxleC13cmFwOiB3cmFwO1xuXHRqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG5cdG1hcmdpbi1sZWZ0OiAxMHB4O1xuXHRtYXJnaW4tcmlnaHQ6IDEwcHg7XG59IiwiLndlbGNvbWUtY2FyZCBpbWcge1xuICBtYXgtaGVpZ2h0OiAzNXZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuXG4jZXh0cmFzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG59Il19 */"
+module.exports = ".welcome-card img {\n  max-height: 35vh;\n  overflow: hidden;\n}\n\n#extras {\n  display: -webkit-box;\n  display: flex;\n  position: fixed;\n  flex-wrap: wrap;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  bottom: 0;\n  left: 0;\n  padding: 1em 1em 2em 1em;\n}\n\n#extras > * {\n  margins: 1em 0em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMS9DOlxcVXNlcnNcXFl1YW4gQ2hlblxcTGlmZWxpbmVcXGZyb250ZW5kL3NyY1xcYXBwXFx0YWIxXFx0YWIxLnBhZ2Uuc2NzcyIsInNyYy9hcHAvdGFiMS90YWIxLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFBO0VBQ0EsZ0JBQUE7QUNDRjs7QURFQTtFQUVDLG9CQUFBO0VBQUEsYUFBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0EsNEJBQUE7RUFBQSw2QkFBQTtVQUFBLHNCQUFBO0VBQ0EseUJBQUE7VUFBQSw4QkFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0VBQ0csd0JBQUE7QUNBSjs7QURHQTtFQUNDLGdCQUFBO0FDQUQiLCJmaWxlIjoic3JjL2FwcC90YWIxL3RhYjEucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndlbGNvbWUtY2FyZCBpbWcge1xyXG4gIG1heC1oZWlnaHQ6IDM1dmg7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG5cclxuI2V4dHJhc1xyXG57XHJcblx0ZGlzcGxheTogZmxleDtcclxuXHRwb3NpdGlvbjogZml4ZWQ7XHJcblx0ZmxleC13cmFwOiB3cmFwO1xyXG5cdGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcblx0anVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG5cdGJvdHRvbTogMDtcclxuXHRsZWZ0OiAwO1xyXG4gICAgcGFkZGluZzogMWVtIDFlbSAyZW0gMWVtO1xyXG59XHJcblxyXG4jZXh0cmFzID4gKiB7XHJcblx0bWFyZ2luczogMWVtIDBlbTtcclxufSIsIi53ZWxjb21lLWNhcmQgaW1nIHtcbiAgbWF4LWhlaWdodDogMzV2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuI2V4dHJhcyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGJvdHRvbTogMDtcbiAgbGVmdDogMDtcbiAgcGFkZGluZzogMWVtIDFlbSAyZW0gMWVtO1xufVxuXG4jZXh0cmFzID4gKiB7XG4gIG1hcmdpbnM6IDFlbSAwZW07XG59Il19 */"
 
 /***/ }),
 
@@ -1972,10 +1976,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/google-maps */ "./node_modules/@ionic-native/google-maps/index.js");
-/* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+/* harmony import */ var _services_socket_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../services/socket.service */ "./src/services/socket.service.ts");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
-
 
 
 
@@ -1983,55 +1985,237 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let Tab1Page = class Tab1Page {
-    constructor(socket, platform, geolocation, storage) {
+    constructor(socket, platform, geolocation) {
         this.socket = socket;
         this.platform = platform;
         this.geolocation = geolocation;
-        this.storage = storage;
+        this.emsMarkers = [
+            {
+                "icon": 'blue',
+                "title": "Middlesex London EMS Headquarters Station #1",
+                "name": "Middlesex London EMS Headquarters Station #1",
+                "position": {
+                    "lng": -81.241056968403,
+                    "lat": 42.983691382743
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "EMS Station #2",
+                "name": "EMS Station #2",
+                "position": {
+                    "lng": -81.23191612369,
+                    "lat": 42.923020719595
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "EMS Station #4",
+                "name": "EMS Station #4",
+                "position": {
+                    "lng": -81.245347432145,
+                    "lat": 43.040678946609
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "EMS Station #3",
+                "name": "EMS Station #3",
+                "position": {
+                    "lng": -81.2957040588,
+                    "lat": 42.983394641625
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "EMS Station #5",
+                "name": "EMS Station #5",
+                "position": {
+                    "lng": -81.172191725155,
+                    "lat": 43.006659071277
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "EMS Station #6",
+                "name": "EMS Station #6",
+                "position": {
+                    "lng": -81.316152502338,
+                    "lat": 42.933933855438
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "EMS Station #7",
+                "name": "EMS Station #7",
+                "position": {
+                    "lng": -81.339872421616,
+                    "lat": 43.015236242195
+                }
+            }
+        ];
+        this.hospitalMarkers = [
+            {
+                "icon": 'blue',
+                "title": "London Health Sciences Centre - Victoria Hospital",
+                "name": "London Health Sciences Centre - Victoria Hospital",
+                "position": {
+                    "lng": -81.226346319931,
+                    "lat": 42.960201507895
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "London Health Sciences Centre - Children's Hospital",
+                "name": "London Health Sciences Centre - Children's Hospital",
+                "position": {
+                    "lng": -81.225691475973,
+                    "lat": 42.961276600093
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "London Health Sciences Centre - University Hospital",
+                "name": "London Health Sciences Centre - University Hospital",
+                "position": {
+                    "lng": -81.274748988433,
+                    "lat": 43.012382331917
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "St Joseph's Health Care Hospital",
+                "name": "St Joseph's Health Care Hospital",
+                "position": {
+                    "lng": -81.253949098806,
+                    "lat": 43.000399374159
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "Parkwood Institute",
+                "name": "Parkwood Institute",
+                "position": {
+                    "lng": -81.224883412043,
+                    "lat": 42.955810655303
+                }
+            },
+            {
+                "icon": 'blue',
+                "title": "London Psychiatric Hospital",
+                "name": "London Psychiatric Hospital",
+                "position": {
+                    "lng": -81.205516962187,
+                    "lat": 43.003856043295
+                }
+            }
+        ];
+        this.location = {};
+        this.currentAlert = null;
+        this.distressIcons = [];
     }
     ngOnInit() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            this.socket.connect();
-            this.geolocation.getCurrentPosition().then((resp) => {
-                // resp.coords.latitude
-                // resp.coords.longitude
-                // set a key/value
-                this.storage.ready().then(() => {
-                    this.storage.set('coords', { 'lat': resp.coords.latitude, 'lng': resp.coords.longitude });
-                });
-            }).catch((error) => {
-                console.log('Error getting location', error);
-            });
             // Since ngOnInit() is executed before `deviceready` event,
             // you have to wait the event.
             yield this.platform.ready();
             yield this.loadMap();
         });
     }
-    loadMap() {
-        _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["Environment"].setEnv({
-            'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyCsRbd3PmUnTdwns7r3UYTeeAAw8IRUSI8',
-            'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyCsRbd3PmUnTdwns7r3UYTeeAAw8IRUSI8'
+    ionViewDidEnter() {
+        this.socket.updateDistressSignals();
+    }
+    addLocations() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            for (let i = 0; i < this.emsMarkers.length; i++) {
+                yield this.map.addMarker({
+                    title: this.emsMarkers[i]['title'],
+                    animation: 'DROP',
+                    icon: { 'url': './assets/small.png' },
+                    position: this.emsMarkers[i].position
+                });
+                console.log("hi");
+            }
+            for (let i = 0; i < this.hospitalMarkers.length; i++) {
+                yield this.map.addMarker({
+                    title: this.hospitalMarkers[i]['title'],
+                    animation: 'DROP',
+                    icon: { 'url': './assets/small.png' },
+                    position: this.hospitalMarkers[i].position
+                });
+                console.log("hi2");
+            }
         });
-        this.storage.get('coords').then((coords) => {
+    }
+    loadMap() {
+        this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((resp) => {
+            this.location = { 'lat': resp.coords.latitude, 'lng': resp.coords.longitude };
+            console.log(this.location);
+            _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["Environment"].setEnv({
+                'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyCsRbd3PmUnTdwns7r3UYTeeAAw8IRUSI8',
+                'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyCsRbd3PmUnTdwns7r3UYTeeAAw8IRUSI8'
+            });
             this.map = _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["GoogleMaps"].create('map_canvas', {
                 camera: {
                     target: {
-                        lat: coords.lat,
-                        lng: coords.lng
+                        lat: this.location['lat'],
+                        lng: this.location['lng']
                     },
-                    zoom: 18,
+                    zoom: 20,
                     tilt: 30
                 }
             });
+            this.socket.updateDistressSignals()
+                .subscribe(signals => {
+                console.log("New Update");
+                console.log(signals);
+                this.map.clear();
+                //populate data from london
+                this.addLocations().then(() => {
+                    if (signals.length > 0) {
+                        // Use only latest alert
+                        this.currentAlert = signals[signals.length - 1];
+                        console.log(this.currentAlert);
+                        this.gmapsLink = `https://www.google.com/maps/dir/?api=1&destination=${this.currentAlert.coords.lat},${this.currentAlert.coords.lng}`;
+                        // Add marker (Move camera to it)
+                        this.map.addMarker({
+                            title: 'Distress Alert',
+                            icon: 'red',
+                            animation: 'DROP',
+                            position: {
+                                lat: this.currentAlert.coords.lat,
+                                lng: this.currentAlert.coords.lng
+                            }
+                        }).then(() => {
+                            this.map.animateCamera({
+                                target: { lat: this.currentAlert.coords.lat, lng: this.currentAlert.coords.lng },
+                                zoom: 20,
+                                tilt: 60,
+                                bearing: 140,
+                                duration: 5000
+                            }).then(() => {
+                            });
+                        });
+                    }
+                    else {
+                        this.currentAlert = null;
+                        this.gmapsLink = null;
+                    }
+                });
+            });
+            this.socket.emit("UpdateDistressSignals", null);
+        }).catch((error) => {
+            console.log('Error getting location', error);
         });
+    }
+    ResolveButton() {
+        this.socket.emit("DeleteDistressSignals", null);
     }
 };
 Tab1Page.ctorParameters = () => [
-    { type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_4__["Socket"] },
+    { type: _services_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
-    { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"] },
-    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] }
+    { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"] }
 ];
 Tab1Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2039,8 +2223,181 @@ Tab1Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./tab1.page.html */ "./node_modules/raw-loader/index.js!./src/app/tab1/tab1.page.html"),
         styles: [__webpack_require__(/*! ./tab1.page.scss */ "./src/app/tab1/tab1.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [ngx_socket_io__WEBPACK_IMPORTED_MODULE_4__["Socket"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]])
 ], Tab1Page);
+
+
+
+/***/ }),
+
+/***/ "./src/pipes/TimeAgo.pipe.ts":
+/*!***********************************!*\
+  !*** ./src/pipes/TimeAgo.pipe.ts ***!
+  \***********************************/
+/*! exports provided: TimeAgoPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimeAgoPipe", function() { return TimeAgoPipe; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TimeAgoPipe = class TimeAgoPipe {
+    constructor(changeDetectorRef, ngZone) {
+        this.changeDetectorRef = changeDetectorRef;
+        this.ngZone = ngZone;
+    }
+    transform(value) {
+        this.removeTimer();
+        let d = new Date(value);
+        let now = new Date();
+        let seconds = Math.round(Math.abs((now.getTime() - d.getTime()) / 1000));
+        let timeToUpdate = (Number.isNaN(seconds)) ? 1000 : this.getSecondsUntilUpdate(seconds) * 1000;
+        this.timer = this.ngZone.runOutsideAngular(() => {
+            if (typeof window !== 'undefined') {
+                return window.setTimeout(() => {
+                    this.ngZone.run(() => this.changeDetectorRef.markForCheck());
+                }, timeToUpdate);
+            }
+            return null;
+        });
+        let minutes = Math.round(Math.abs(seconds / 60));
+        let hours = Math.round(Math.abs(minutes / 60));
+        let days = Math.round(Math.abs(hours / 24));
+        let months = Math.round(Math.abs(days / 30.416));
+        let years = Math.round(Math.abs(days / 365));
+        if (Number.isNaN(seconds)) {
+            return '';
+        }
+        else if (seconds <= 45) {
+            return 'a few seconds ago';
+        }
+        else if (seconds <= 90) {
+            return 'a minute ago';
+        }
+        else if (minutes <= 45) {
+            return minutes + ' minutes ago';
+        }
+        else if (minutes <= 90) {
+            return 'an hour ago';
+        }
+        else if (hours <= 22) {
+            return hours + ' hours ago';
+        }
+        else if (hours <= 36) {
+            return 'a day ago';
+        }
+        else if (days <= 25) {
+            return days + ' days ago';
+        }
+        else if (days <= 45) {
+            return 'a month ago';
+        }
+        else if (days <= 345) {
+            return months + ' months ago';
+        }
+        else if (days <= 545) {
+            return 'a year ago';
+        }
+        else { // (days > 545)
+            return years + ' years ago';
+        }
+    }
+    ngOnDestroy() {
+        this.removeTimer();
+    }
+    removeTimer() {
+        if (this.timer) {
+            window.clearTimeout(this.timer);
+            this.timer = null;
+        }
+    }
+    getSecondsUntilUpdate(seconds) {
+        let min = 60;
+        let hr = min * 60;
+        let day = hr * 24;
+        if (seconds < min) { // less than 1 min, update every 2 secs
+            return 2;
+        }
+        else if (seconds < hr) { // less than an hour, update every 30 secs
+            return 30;
+        }
+        else if (seconds < day) { // less then a day, update every 5 mins
+            return 300;
+        }
+        else { // update every hour
+            return 3600;
+        }
+    }
+};
+TimeAgoPipe.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+];
+TimeAgoPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+        name: 'timeAgo',
+        pure: false
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
+], TimeAgoPipe);
+
+
+
+/***/ }),
+
+/***/ "./src/pipes/date-ago.pipe.ts":
+/*!************************************!*\
+  !*** ./src/pipes/date-ago.pipe.ts ***!
+  \************************************/
+/*! exports provided: DateAgoPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DateAgoPipe", function() { return DateAgoPipe; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let DateAgoPipe = class DateAgoPipe {
+    transform(value, args) {
+        if (value) {
+            const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
+            if (seconds < 29) // less than 30 seconds ago will show as 'Just now'
+                return 'Just now';
+            const intervals = {
+                'year': 31536000,
+                'month': 2592000,
+                'week': 604800,
+                'day': 86400,
+                'hour': 3600,
+                'minute': 60,
+                'second': 1
+            };
+            let counter;
+            for (const i in intervals) {
+                counter = Math.floor(seconds / intervals[i]);
+                if (counter > 0)
+                    if (counter === 1) {
+                        return counter + ' ' + i + ' ago'; // singular (1 day ago)
+                    }
+                    else {
+                        return counter + ' ' + i + 's ago'; // plural (2 days ago)
+                    }
+            }
+        }
+        return value;
+    }
+};
+DateAgoPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+        name: 'dateAgo',
+        pure: true
+    })
+], DateAgoPipe);
 
 
 

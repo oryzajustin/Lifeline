@@ -7,5 +7,15 @@
 </ion-header>
 
 <ion-content>
-	<ion-button color="danger" id="center">CALL FOR HELP</ion-button>
+	<ion-button *ngIf="!alerting" color="danger" id="center" (click)="GetHelp()">CALL FOR HELP</ion-button>
+	<ion-card *ngIf="alerting" color="success">
+	  <ion-card-header>
+	    <ion-card-subtitle>{{helperCount}} responders alerted</ion-card-subtitle>
+	    <ion-card-title>Help is on the way!</ion-card-title>
+	  </ion-card-header>
+
+	  <ion-card-content>
+	    Here are some 
+	  </ion-card-content>
+	</ion-card>
 </ion-content>

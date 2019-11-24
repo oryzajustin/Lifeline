@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"tab1\">\n      <ion-icon name=\"medkit\"></ion-icon>\n      <ion-label>Responder</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button style=\"--color: red\" tab=\"tab2\">\n      <ion-icon name=\"alert\"></ion-icon>\n      <ion-label>Distress</ion-label>\n    </ion-tab-button>\n\n  </ion-tab-bar>\n\n</ion-tabs>\n"
+module.exports = "<ion-tabs>\r\n\r\n  <ion-tab-bar slot=\"bottom\">\r\n    <ion-tab-button tab=\"tab1\">\r\n      <ion-icon name=\"medkit\"></ion-icon>\r\n      <ion-label>Responder</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button style=\"--color: red\" tab=\"tab2\">\r\n      <ion-icon name=\"alert\"></ion-icon>\r\n      <ion-label>Distress</ion-label>\r\n    </ion-tab-button>\r\n\r\n  </ion-tab-bar>\r\n\r\n</ion-tabs>\r\n"
 
 /***/ }),
 
@@ -57,26 +57,15 @@ var routes = [
                 ]
             },
             {
-                path: 'tab3',
-                children: [
-                    {
-                        path: '',
-                        loadChildren: function () {
-                            return __webpack_require__.e(/*! import() | tab3-tab3-module */ "tab3-tab3-module").then(__webpack_require__.bind(null, /*! ../tab3/tab3.module */ "./src/app/tab3/tab3.module.ts")).then(function (m) { return m.Tab3PageModule; });
-                        }
-                    }
-                ]
-            },
-            {
                 path: '',
-                redirectTo: '/tabs/tab1',
+                redirectTo: '/tabs/tab2',
                 pathMatch: 'full'
             }
         ]
     },
     {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/tab2',
         pathMatch: 'full'
     }
 ];
@@ -129,7 +118,7 @@ var TabsPageModule = /** @class */ (function () {
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-                _tabs_routing_module__WEBPACK_IMPORTED_MODULE_5__["TabsPageRoutingModule"]
+                _tabs_routing_module__WEBPACK_IMPORTED_MODULE_5__["TabsPageRoutingModule"],
             ],
             declarations: [_tabs_page__WEBPACK_IMPORTED_MODULE_6__["TabsPage"]]
         })
@@ -164,18 +153,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPage", function() { return TabsPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_socket_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../services/socket.service */ "./src/services/socket.service.ts");
+
 
 
 var TabsPage = /** @class */ (function () {
-    function TabsPage() {
+    function TabsPage(socket) {
+        this.socket = socket;
     }
+    TabsPage.prototype.ngOnInit = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.socket.initialize();
+                return [2 /*return*/];
+            });
+        });
+    };
+    TabsPage.ctorParameters = function () { return [
+        { type: _services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"] }
+    ]; };
     TabsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-tabs',
             template: __webpack_require__(/*! raw-loader!./tabs.page.html */ "./node_modules/raw-loader/index.js!./src/app/tabs/tabs.page.html"),
             styles: [__webpack_require__(/*! ./tabs.page.scss */ "./src/app/tabs/tabs.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"]])
     ], TabsPage);
     return TabsPage;
 }());

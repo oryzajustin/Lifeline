@@ -7,10 +7,13 @@
 </ion-header>
 
 <ion-content>
-  <div id="map_canvas" style="height: 90%;"></div>
-    <div id="extras">
-      <p>Timer</p>
-      <ion-button color="warning">
+  <div id="map_canvas" style="height: 100%;"></div>
+    <div id="extras" *ngIf="currentAlert">
+      <p *ngIf="currentAlert">{{ currentAlert.time | dateAgo }}</p>
+      <ion-button *ngIf="currentAlert" [href]="gmapsLink">
+        Directions
+      </ion-button>
+      <ion-button color="warning" (click)="ResolveButton()">
         All Secure
       </ion-button>
     </div>
