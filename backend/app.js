@@ -30,30 +30,30 @@ io.on('connection', function(socket){
   socket.emit('UpdateDistressSignals', distressSignals);
 
   // Add distress signal to the list and refreshes clients
-  socket.on('CreateDistressSignal', function(data){
+  socket.on('CreateDistressSignal', function(data) {
     distressSignals.push({
       id: socket.id, 
       coords: data.coords,
       time: Date.now()
     });
 
-    twilio_client.calls.create({
-      url: process.env.VOICE_URL,
-      to: process.env.DEMO_PHONE, // Text this number
-      from: process.env.TWILIO // From a valid Twilio number
-    })
-    .then((call) => console.log(call.sid));
+    // twilio_client.calls.create({
+    //   url: process.env.VOICE_URL,
+    //   to: process.env.DEMO_PHONE, // Text this number
+    //   from: process.env.TWILIO // From a valid Twilio number
+    // })
+    // .then((call) => console.log(call.sid));
 
     // Update all other users
+    console.log('New Distress Signal ' + socket.id)
     socket.emit('UpdateDistressSignals', distressSignals);
     socket.broadcast.emit('UpdateDistressSignals', distressSignals);
   });
 
   // Delete Distress Signal by ID and refreshes clients
-  socket.on('ResolveDistressSignal', function(signal_id){
-    // Update the rest of the app with the new distress signal list
+  socket.on('ResolveDistressSignal', function(signal_id) {
+    
     let index = -1;
-
     for(i = 0; i < distressSignals.length; i++) {
       if (distressSignals[i]['id'] === signal_id) {
         index = i;
@@ -63,6 +63,7 @@ io.on('connection', function(socket){
 
     // If found. Otherwise, shame on you, Justin.
     if (index > -1) {
+      console.log('Distress Signal Resolved ' + socket.id)
       distressSignals.splice(index);
       socket.emit('UpdateDistressSignals', distressSignals);
       socket.broadcast.emit('UpdateDistressSignals', distressSignals);
@@ -70,11 +71,11 @@ io.on('connection', function(socket){
   });
 
   // Refreshes the client
-  socket.on('UpdateDistressSignals', function(){
+  socket.on('UpdateDistressSignals', function() {
     socket.emit('UpdateDistressSignals', distressSignals);
   });
 });
 
 http.listen(port, function(){
-  console.log('listening on *:' + port);
+  console.log('listening on port:' + port);
 });

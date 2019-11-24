@@ -17,22 +17,30 @@
   </head>
   <body>
     <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+    <button id="newSignal">Send</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var socket = io();
       $(function () {
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
+        $('#newSignal').click(function(){
+          socket.emit('CreateDistressSignal', {coords: [12.3, 234.4]});
+        }); 
+        socket.on('UpdateDistressSignals', function(signals){
+          
+          $('#messages').empty();
+          for (i = 0; i < signals.length; i++) {
+            
+            $('#messages')
+              .append(
+                $('<li>').text(signals[i]['id'] + " " + signals[i]['coords'] + " " + signals[i]['time'])
+              );
+            
+            $('#messages').append($('<button>').prop('id', signals[i]['id']).click(function(){
+              socket.emit('ResolveDistressSignal', this.attr('id'));
+            }));
+          }
+
         });
       });
     </script>
