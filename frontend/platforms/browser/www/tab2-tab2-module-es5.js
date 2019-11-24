@@ -150,6 +150,7 @@ var Tab2Page = /** @class */ (function () {
             _this.location = { 'coords': { 'lat': resp.coords.latitude, 'lng': resp.coords.longitude } };
             console.log(_this.location);
             _this.socket.emit("CreateDistressSignal", _this.location);
+            _this.socket.emit("ToggleTwilio", null);
         });
     };
     Tab2Page.ctorParameters = function () { return [

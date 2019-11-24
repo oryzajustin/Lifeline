@@ -51,6 +51,7 @@ io.on('connection', function(socket){
       });
 
       if (enableTwilio) {
+        console.log("CALLING");
         twilio_client.calls.create({
           url: process.env.VOICE_URL,
           to: process.env.DEMO_PHONE, // Text this number

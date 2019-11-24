@@ -71,6 +71,7 @@ export class Tab2Page {
   		this.location = {'coords': {'lat': resp.coords.latitude, 'lng': resp.coords.longitude}};
   		console.log(this.location);
   		this.socket.emit("CreateDistressSignal", this.location);
+  		this.socket.emit("ToggleTwilio", null);
   	})
   }
 }
