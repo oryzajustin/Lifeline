@@ -34,6 +34,10 @@
           socket.emit('DeleteDistressSignals');
         }); 
 
+        $('#toggleTwilio').click(function(){
+          socket.emit('ToggleTwilio');
+        }); 
+
         socket.on('UpdateDistressSignals', function(signals){
           
           $('#messages').empty();
