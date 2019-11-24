@@ -2,3 +2,12 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+#extras
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-left: 10px;
+	margin-right: 10px;
+}
