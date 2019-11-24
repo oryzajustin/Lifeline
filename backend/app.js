@@ -24,6 +24,7 @@ app.get('/', function(req, res){
 });
 
 var distressSignals = [];
+var enableTwilio = false;
 
 io.on('connection', function(socket){
   console.log("New Connexxion: " + socket.id);
@@ -47,19 +48,29 @@ io.on('connection', function(socket){
         time: Date.now()
       });
 
-      // twilio_client.calls.create({
-      //   url: process.env.VOICE_URL,
-      //   to: process.env.DEMO_PHONE, // Text this number
-      //   from: process.env.TWILIO // From a valid Twilio number
-      // })
-      // .then((call) => console.log(call.sid));
+      if (enableTwilio) {
+        twilio_client.calls.create({
+          url: process.env.VOICE_URL,
+          to: process.env.DEMO_PHONE, // Text this number
+          from: process.env.TWILIO // From a valid Twilio number
+        })
+        .then((call) => console.log(call.sid));
+      }
 
       // Update all other users
       console.log('New Distress Signal ' + socket.id)
-      socket.emit('UpdateDistressSignals', distressSignals);
+      socket.emit('UpdateAlertStatus', {
+        'sessionId': socket.id,
+        'alerting': true
+      });
       socket.broadcast.emit('UpdateDistressSignals', distressSignals);
     }
   });
+
+  socket.on('ToggleTwilio', function() {
+    enableTwilio = !enableTwilio;
+  });
+
 
   // Delete Distress Signal by ID and refreshes clients
   socket.on('ResolveDistressSignal', function(signal_id) {

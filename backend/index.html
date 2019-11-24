@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>Lifeline</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
@@ -22,11 +22,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      var socket = io();
+      var socket = io('https://hackwesternlifeline.appspot.com/');
       $(function () {
 
         $('#newSignal').click(function(){
-          socket.emit('CreateDistressSignal', {coords: [12.3, 234.4]});
+          socket.emit('CreateDistressSignal', {coords: {'lat': 43.0054139, 'lng': -81.2651221}});
         }); 
 
         $('#deleteSignal').click(function(){
