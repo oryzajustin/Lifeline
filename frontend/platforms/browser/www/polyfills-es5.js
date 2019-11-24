@@ -13066,6 +13066,7 @@ __webpack_require__.r(__webpack_exports__);
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+window.global = window;
 
 
 /***/ }),
@@ -13086,20 +13087,20 @@ window.__Zone_disable_customElements = true;
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** multi ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js ./src/polyfills.ts ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Andy\Downloads\ionic-googlemaps-quickdemo-v4-master\frontend - Copy\frontend\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
-__webpack_require__(/*! C:\Users\Andy\Downloads\ionic-googlemaps-quickdemo-v4-master\frontend - Copy\frontend\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js");
-__webpack_require__(/*! C:\Users\Andy\Downloads\ionic-googlemaps-quickdemo-v4-master\frontend - Copy\frontend\src\polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! C:\Users\Andy\Downloads\ionic-googlemaps-quickdemo-v4-master\frontend - Copy\frontend\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+__webpack_require__(/*! /Users/justinkoh/Documents/GitHub/Lifeline/frontend/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
+__webpack_require__(/*! /Users/justinkoh/Documents/GitHub/Lifeline/frontend/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js");
+__webpack_require__(/*! /Users/justinkoh/Documents/GitHub/Lifeline/frontend/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! /Users/justinkoh/Documents/GitHub/Lifeline/frontend/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
 
 /***/ })
 
-},[[1,"runtime"]]]);
+},[[2,"runtime"]]]);
 //# sourceMappingURL=polyfills-es5.js.map
