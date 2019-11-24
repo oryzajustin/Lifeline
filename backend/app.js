@@ -55,7 +55,7 @@ io.on('connection', function(socket){
         twilio_client.calls.create({
           url: process.env.VOICE_URL,
           to: process.env.DEMO_PHONE, // Text this number
-          from: process.env.TWILIO // From a valid Twilio number
+          from: process.env.TWILIO_PHONE // From a valid Twilio number
         })
         .then((call) => console.log(call.sid));
       }
